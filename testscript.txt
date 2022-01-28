@@ -1,0 +1,13 @@
+_常量定义 = 1
+                                   ########注释来了
+$3 = 2222
+$$52 = $3
+for $3 = 0 to 20
+  if $3 > 10
+    print 10
+  elif $3 > 2
+    print 2
+  else
+    print 其他
+  endif
+next
