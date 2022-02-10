@@ -1,4 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
+
+using Injection;
+
 var text = "";
 if(args.Length > 1)
 {
@@ -12,3 +15,5 @@ const string VarStant = @"\${1,2}"+Ident;
 const string ExtVar = @"@"+Ident;
 
 Console.WriteLine($"code: <{text}>");
+
+PointerUtil.GetPointerAddress("[[main+427C470]+1F0]+68");
