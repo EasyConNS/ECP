@@ -8,16 +8,14 @@
 按行分隔，每行作为一个表达式，无需特殊字符结尾
 关键字，大小写忽略，但不可混用，格式化时统一大写
 
-注释，单行注释"#"其后全部为注释内容
-
-- 立即数，-?\d+，暂时只支持整数，2字节或4字节
-- 变量，"$"或"$$"开头的为变量，默认值0。例：$1=1, $$test=233 
+- 注释，单行注释"#"其后全部为注释内容
+- 立即数，-?\d+，暂时只支持整数，2字节或4字节（65,535、4,294,967,295）
+- 变量，"$"或"$$"开头的为变量。例：$1=1, $$test=233 
 - 常量，"_"开头的为常量，必须先定义再使用。例：_测试时间=100
 - 搜图变量，"@"开头的变量，只能出现在赋值右侧(兼容)。例：$1=@闪光度(当前为搜图专属，返回对应搜图匹配度结果，不排除后期扩展)
 
 关键字：
-wait、if/elif/else/endif(流程控制)、for/to/step(保留)/next/break/continue(循环)、func/ret/call(函数调用)
-语法：TODO
+if/elif/else/endif(流程控制)、for/to/step(保留)/next/break/continue(循环)、func/ret/call(函数调用)
 
 特殊符号：
 - 算术符号：+-*/(整除)%(取余数)\(舍入除)
@@ -26,6 +24,12 @@ wait、if/elif/else/endif(流程控制)、for/to/step(保留)/next/break/continu
 - 比较：<、>、<=、>=、!=、==(双等比较)
 - 取负：目标变量 = -变量
 - 取反：目标变量 = ~变量
+
+等待：
+wait
+
+等待语法：
+- `[wait] 500`等待500ms，wait关键字可省略
 
 按键：
 关键字：A、B、X、Y、L、R、ZL、ZR、MINUS(-)、PLUS(+)、LCLICK(按左摇杆)、RCLICK(按右摇杆)、HOME(返回系统)、CAPTURE(截屏)、LEFT、RIGHT、UP、DOWN(方向)
@@ -37,12 +41,12 @@ wait、if/elif/else/endif(流程控制)、for/to/step(保留)/next/break/continu
 - `<LS|RS> <RESET|UP|DOWNN|LEFT|RIGHT> [duringtime]`按照方向推左右摇杆,持续时间省略则保持，直到RESET
 - `<LS|RS> <0-360>`按照角度推摇杆(兼容)
 
-输出语法：
+输出：
 print、alert。使用&分隔
 
-虚拟机函数：#V1虚拟机内置指令，后续更新考虑废弃，类似功能由库或ffi实现
+内置函数：#V1虚拟机内置指令，后续更新计划由库或ffi实现类似功能
+rand、bool
 
-关键字：rand、bool
 函数语法：rand|bool <变量>(后接接收值的变量)
 
 >考虑使用ffi扩充脚本函数功能，如XoroshiroRNG
