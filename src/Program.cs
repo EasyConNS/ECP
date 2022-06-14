@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using Injection;
-using Token;
+using Compiler;
 
 var text = "";
 if(args.Length > 1)
@@ -17,6 +17,6 @@ const string ExtVar = @"@"+Ident;
 
 //PointerUtil.GetPointerAddress("[[main+427C470]+1F0]+68");
 
-text = "我嫩阿斯蒂芬asdf = 10";
+text = "_孵蛋数 = 101\n wait 500\nfor\na\nnext\r\n $3=5\nif $3 >= 5\n a\nendif";
 
-Tokenizer.Parse(text);
+Scanner.Build(text);

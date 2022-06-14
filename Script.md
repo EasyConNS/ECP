@@ -15,7 +15,25 @@
 - 搜图变量，"@"开头的变量，只能出现在赋值右侧(兼容)。例：$1=@闪光度(当前为搜图专属，返回对应搜图匹配度结果，不排除后期扩展)
 
 关键字：
-if/elif/else/endif(流程控制)、for/to/step(保留)/next/break/continue(循环)、func/ret/call(函数调用)
+if/elif/else/endif(流程控制)、for/to/in(保留)/step(保留)/next/break/continue(循环)、func/ret/call(函数调用)
+
+语法：
+if `exp`
+[elif `exp`]
+// statement
+[else]
+// statement
+endif
+
+for `var` = `num|var` to `num|var` [step `num|var`] | for [`var` in] `num`
+// break
+// continue
+next
+
+func `ident`
+ret
+调用：
+call `ident`
 
 特殊符号：
 - 算术符号：+-*/(整除)%(取余数)\(舍入除)
