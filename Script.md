@@ -6,6 +6,7 @@
 
 
 按行分隔，每行作为一个表达式，无需特殊字符结尾
+
 关键字，大小写忽略，但不可混用，格式化时统一大写
 
 - 注释，单行注释"#"其后全部为注释内容
@@ -15,7 +16,7 @@
 - 搜图变量，"@"开头的变量，只能出现在赋值右侧(兼容)。例：$1=@闪光度(当前为搜图专属，返回对应搜图匹配度结果，不排除后期扩展)
 
 关键字：
-if/elif/else/endif(流程控制)、for/to/in(保留)/step(保留)/next/break/continue(循环)、func/ret/call(函数调用)
+if/elif/else/endif(流程控制)、for/to/in(保留)/step(保留)/next/break/continue(循环)、func/return/endfunc/call(函数调用)
 
 语法：
 if `exp`
@@ -31,9 +32,11 @@ for `var` = `num|var` to `num|var` [step `num|var`] | for [`var` in] `num`
 next
 
 func `ident`
-ret
+//return <var>
+endfunc
+
 调用：
-call `ident`
+>call `ident`
 
 特殊符号：
 - 算术符号：+-*/(整除)%(取余数)\(舍入除)
@@ -43,8 +46,8 @@ call `ident`
 - 取负：目标变量 = -变量
 - 取反：目标变量 = ~变量
 
-等待：
-wait
+等待：按照关键字处理，但实现上应使用库来实现，与虚拟机实现分离
+>wait
 
 等待语法：
 - `[wait] 500`等待500ms，wait关键字可省略
@@ -59,12 +62,10 @@ wait
 - `<LS|RS> <RESET|UP|DOWNN|LEFT|RIGHT> [duringtime]`按照方向推左右摇杆,持续时间省略则保持，直到RESET
 - `<LS|RS> <0-360>`按照角度推摇杆(兼容)
 
-输出：
-print、alert。使用&分隔
+输出：#V1虚拟机兼容语法，无法使用语法解析，进行特殊处理
+>print、alert。使用&分隔
 
-内置函数：#V1虚拟机内置指令，后续更新计划由库或ffi实现类似功能
-rand、bool
+内置函数：#V1虚拟机遗留指令，后续更新计划由库或ffi实现类似功能
+>rand、bool等
 
-函数语法：rand|bool <变量>(后接接收值的变量)
-
->考虑使用ffi扩充脚本函数功能，如XoroshiroRNG
+>考虑使用ffi扩充脚本函数库功能，如XoroshiroRNG算法等
