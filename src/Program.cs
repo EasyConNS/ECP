@@ -17,6 +17,6 @@ const string ExtVar = @"@"+Ident;
 
 //PointerUtil.GetPointerAddress("[[main+427C470]+1F0]+68");
 
-text = "_孵蛋数 = 101\n wait 500\nfor\na\nnext\r\n $3=5\nif $3 >= 5\n a\nendif";
+text = "_孵蛋数 = 101\n wait 500\nfor\na\nnext\r\n $3=5\nif $3 >= 5\n a\nendif\nprint \"有什么，、·能够 & $test & 阻挡test\"\n\n";
 
 Scanner.Build(text);
