@@ -1,5 +1,5 @@
 using System.Text.RegularExpressions;
-
+using VBF.Compilers;
 using System.Text;
 namespace Scripter;
 
@@ -7,14 +7,14 @@ static class ScriptUtil
 {
     public static void Build(string text)
     {
-        var scripter = new ECP.ECScript(new Compiler.CompilationErrorManager());
-        text = compat(text);
-
-        List<Compiler.Scanners.Lexeme> tokens = new();
-
-        foreach(var t in scripter.Parse(text))
+        CompilationErrorManager errorManager = new CompilationErrorManager();
+        CompilationErrorList errorList = errorManager.CreateErrorList();
+        var scripter = new ECP.VBFECScript(errorManager);
+        scripter.Initialize();
+        var ast = scripter.Parse(text, errorList);
+        foreach(var s in ast.Statements)
         {
-            Console.WriteLine(t);
+            Console.Writeline(s);
         }
     }
 
